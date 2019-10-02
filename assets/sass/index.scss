@@ -1,0 +1,157 @@
+//Colours
+$background: #0f111a;
+$foreground: #131622;
+
+$white: #f3efe0;
+$bright-white: #ffffff;
+$gray: #8f93a2;
+$red: #e25822;
+$green: #14b37d;
+$yellow: #f2f27a;
+$blue: #3a75c4;
+$light-blue: #87d3f8;
+$purple: #703faf;
+
+//Padding
+$pad: 1rem; //16px
+$pad-sm: 0.5rem; //8px
+$pad-md: 1.5rem; //24px
+$pad-lg: 2rem; //34px
+
+//Setup
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $background;
+  color: $white;
+}
+
+section {
+  display: block;
+}
+
+//Images
+
+//Mixins
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+//usage .box { @include transform(rotate(30deg)); }
+
+@mixin mq($from) {
+  @media (max-width: $from) {
+    @content;
+  }
+}
+/*ussage
+@include mx(900px) {
+    your styles
+}
+*/
+
+@mixin padding($top, $right, $bottom, $left) {
+  padding: $top, $right, $bottom, $left;
+
+  @if expr {
+  }
+}
+
+//These seem fucking mental but hear me out... easier to overide 0_0
+//Padding mixin
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+//Margin mixin
+@mixin margin($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+//usage @include padding(1px, null, 3px, 4px);
+
+.site {
+  margin: 0 auto;
+  max-width: 932px;
+  width: 100%;
+}
+
+.hero {
+  display: block;
+  @include padding(null, $pad, null, $pad);
+}
+
+.header-content {
+  @include padding($pad-lg, $pad-lg, $pad-lg, $pad-lg);
+  display: block;
+  background-color: $foreground;
+}
+
+.site-nav {
+  @include padding($pad, $pad-lg, $pad, $pad-lg);
+  border-bottom: solid 1px $background;
+  background-color: $foreground;
+}
+
+.section-title {
+  @include padding(null, $pad, null, $pad);
+}
+
+.video-projects {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
+  align-items: stretch;
+
+  .project {
+    flex: 0 0 50%;
+    @include padding(null, $pad, null, $pad);
+  }
+}
+
+.logo-projects {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
+  align-items: stretch;
+  .project {
+    flex: 1 1 133px;
+    @include margin($pad-sm, $pad-sm, $pad-sm, $pad-sm);
+    @include padding($pad-sm, $pad-sm, $pad-sm, $pad-sm);
+    background: $bright-white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &.watson {
+      background: #0e3657;
+    }
+    &.inverted {
+      background: black;
+    }
+  }
+}
