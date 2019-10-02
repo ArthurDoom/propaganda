@@ -49,7 +49,7 @@ section {
 //usage .box { @include transform(rotate(30deg)); }
 
 @mixin mq($from) {
-  @media (max-width: $from) {
+  @media (min-width: $from) {
     @content;
   }
 }
@@ -59,11 +59,10 @@ section {
 }
 */
 
-@mixin padding($top, $right, $bottom, $left) {
-  padding: $top, $right, $bottom, $left;
-
-  @if expr {
-  }
+@mixin flex($grow, $shrink, $basis) {
+  -ms-flex: $grow $shrink $basis;
+  flex: $grow $shrink $basis;
+  max-width: $basis;
 }
 
 //These seem fucking mental but hear me out... easier to overide 0_0
@@ -81,47 +80,69 @@ section {
   margin-bottom: $bottom;
   margin-left: $left;
 }
-
 //usage @include padding(1px, null, 3px, 4px);
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding-right: $pad;
+  padding-left: $pad;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -1rem;
+  margin-left: -1rem;
+}
 
 .site {
   margin: 0 auto;
-  max-width: 932px;
   width: 100%;
 }
 
-.hero {
-  display: block;
+.header-wrap {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   @include padding(null, $pad, null, $pad);
+  @include flex(0, 0, 100%);
 }
 
 .header-content {
-  @include padding($pad-lg, $pad-lg, $pad-lg, $pad-lg);
-  display: block;
+  @include flex(0, 0, 100%);
+  @include padding($pad-lg, $pad, $pad-lg, $pad);
   background-color: $foreground;
 }
 
 .site-nav {
-  @include padding($pad, $pad-lg, $pad, $pad-lg);
+  @include flex(0, 0, 100%);
+  @include padding($pad, $pad, $pad, $pad);
   border-bottom: solid 1px $background;
   background-color: $foreground;
 }
 
 .section-title {
-  @include padding(null, $pad, null, $pad);
+  @include padding(4rem, $pad, 2rem, $pad);
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .video-projects {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  flex: 1;
-  width: 100%;
-  align-items: stretch;
-
+  @include flex(0, 0, 100%);
   .project {
-    flex: 0 0 50%;
+    @include flex(0, 0, 100%);
     @include padding(null, $pad, null, $pad);
+    //420px covers most XL phones
+    @include mq(420px) {
+      @include flex(0, 0, 50%);
+    }
   }
 }
 
