@@ -434,3 +434,54 @@ a:hover {
 .site-footer-container {
   @include padding(7.5rem, null, 7.5rem, null);
 }
+
+.video-wrap {
+  background-color: #000;
+  margin-bottom: 30px;
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.video-wrap img {
+  width: 100%;
+  top: 0%;
+  left: 0;
+  opacity: 0.7;
+}
+.video-wrap .play-button {
+  width: 90px;
+  height: 90px;
+  background-color: $background;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  border-radius: 100%;
+}
+.video-wrap .play-button:before {
+  content: "";
+  border-style: solid;
+  border-width: 15px 0 15px 26px;
+  border-color: transparent transparent transparent $pink;
+}
+.video-wrap img,
+.video-wrap .play-button {
+  cursor: pointer;
+}
+.video-wrap img,
+.video-wrap iframe,
+.video-wrap .play-button,
+.video-wrap .play-button:before {
+  position: absolute;
+}
+.video-wrap .play-button,
+.video-wrap .play-button:before {
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.video-wrap iframe {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}

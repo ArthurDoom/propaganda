@@ -55,17 +55,10 @@
                   <span class="sr-only"
                     >Video srolling through T30 Website</span
                   >
-                  <div class="video-container">
-                    <div style="padding:56.18% 0 0 0;position:relative;">
-                      <iframe
-                        src="https://player.vimeo.com/video/363603111?autoplay=1&loop=1&title=0&byline=0&portrait=0"
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                        frameborder="0"
-                        allow="fullscreen"
-                        allowfullscreen
-                      ></iframe>
-                    </div>
-                    <script src="https://player.vimeo.com/api/player.js"></script>
+                  <div class="video-wrap" data-embed="363603111">
+                    <!-- (2) the "play" button -->
+                    <div class="play-button"></div>
+                    <img src="./assets/images/videos/t30.png" />
                   </div>
                   <h3>T30 Fitness Training</h3>
                   <p>
@@ -90,18 +83,10 @@
                   <span class="sr-only">
                     Video srolling through Get Me Active Website
                   </span>
-                  <div class="video-container">
-                    <div style="padding:56.09% 0 0 0;position:relative;">
-                      <iframe
-                        src="https://player.vimeo.com/video/363658162?autoplay=1&loop=1&title=0&byline=0&portrait=0"
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                        frameborder="0"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen
-                      ></iframe>
-                    </div>
-                    <script src="https://player.vimeo.com/api/player.js"></script>
-                    <script src="https://player.vimeo.com/api/player.js"></script>
+                  <div class="video-wrap" data-embed="363658162">
+                    <!-- (2) the "play" button -->
+                    <div class="play-button"></div>
+                    <img src="./assets/images/videos/getmeactive.png" />
                   </div>
                   <h3>Get Me Active</h3>
                   <p>
@@ -254,42 +239,51 @@
                         alt="Saturn Wordpress Theme"
                       />
                     </figure>
+                    <div class="figure-bg bg-pink"></div>
+                  </div>
+                  <i class="fas fa-external-link-alt"></i> View + Download</a
+                >
+              </div>
+              <div class="theme">
+                <a href="#">
+                  <div class="figure-wrap">
+                    <figure>
+                      <img
+                        src="./assets/images/themes/mars-beauty.png"
+                        alt="Mars Wordpress Theme"
+                      />
+                    </figure>
+                    <div class="figure-bg bg-blue"></div>
+                  </div>
+                  <i class="fas fa-external-link-alt"></i> View + Download</a
+                >
+              </div>
+              <div class="theme">
+                <a href="#">
+                  <div class="figure-wrap">
+                    <figure>
+                      <img
+                        src="./assets/images/themes/pluto-corporate.png"
+                        alt="Pluto Wordpress Theme"
+                      />
+                    </figure>
                     <div class="figure-bg bg-yellow"></div>
                   </div>
                   <i class="fas fa-external-link-alt"></i> View + Download</a
                 >
               </div>
               <div class="theme">
-                <figure>
-                  <img
-                    src="./assets/images/themes/mars-beauty.png"
-                    alt="Mars Wordpress Theme"
-                  />
-                </figure>
-                <a href="#"
-                  ><i class="fas fa-external-link-alt"></i> View + Download</a
-                >
-              </div>
-              <div class="theme">
-                <figure>
-                  <img
-                    src="./assets/images/themes/pluto-corporate.png"
-                    alt="Pluto Wordpress Theme"
-                  />
-                </figure>
-                <a href="#"
-                  ><i class="fas fa-external-link-alt"></i> View + Download</a
-                >
-              </div>
-              <div class="theme">
-                <figure>
-                  <img
-                    src="./assets/images/themes/coruscan-corporate.png"
-                    alt="Coruscan Wordpress Theme"
-                  />
-                </figure>
-                <a href="#"
-                  ><i class="fas fa-external-link-alt"></i> View + Download</a
+                <a href="#">
+                  <div class="figure-wrap">
+                    <figure>
+                      <img
+                        src="./assets/images/themes/coruscan-corporate.png"
+                        alt="Coruscan Wordpress Theme"
+                      />
+                    </figure>
+                    <div class="figure-bg bg-red"></div>
+                  </div>
+                  <i class="fas fa-external-link-alt"></i> View + Download</a
                 >
               </div>
             </div>
@@ -302,5 +296,6 @@
         </div>
       </footer>
     </div>
+    <script src="./assets/js/index-min.js"></script>
   </body>
 </html>
