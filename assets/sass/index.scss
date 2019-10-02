@@ -11,6 +11,9 @@ $yellow: #f2f27a;
 $blue: #3a75c4;
 $light-blue: #87d3f8;
 $purple: #703faf;
+$pink: #bf4ab4;
+$deep-green: #1d2c38;
+$border-color: #313542;
 
 //Padding
 $pad: 1rem; //16px
@@ -18,29 +21,16 @@ $pad-sm: 0.5rem; //8px
 $pad-md: 1.5rem; //24px
 $pad-lg: 2rem; //34px
 
-//Setup
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  background-color: $background;
-  color: $white;
-}
-
-section {
-  display: block;
-}
-
-//Images
+//Responsive
+$tablet: 420px;
 
 //Mixins
+
+@mixin font-size($size, $base: 16) {
+  font-size: $size + px; // fallback for old browsers
+  font-size: ($size / $base) * 1rem;
+}
+
 @mixin transform($property) {
   -webkit-transform: $property;
   -ms-transform: $property;
@@ -54,10 +44,10 @@ section {
   }
 }
 /*ussage
-@include mx(900px) {
-    your styles
-}
-*/
+  @include mx(900px) {
+      your styles
+  }
+  */
 
 @mixin flex($grow, $shrink, $basis) {
   -ms-flex: $grow $shrink $basis;
@@ -82,6 +72,166 @@ section {
 }
 //usage @include padding(1px, null, 3px, 4px);
 
+//Extend
+%display-flex {
+  display: -ms-flexbox;
+  display: flex;
+}
+//usage @extend display-flex;
+%flex-wrap {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+//Setup
+html {
+  box-sizing: border-box;
+  @include font-size(16);
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $yellow;
+  color: $background;
+  //Enjoy your system font
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-weight: 700;
+  //Not great support from microsoft https://developer.mozilla.org/en-US/docs/web/css/font-smooth
+  font-smooth: always;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  .wrapper {
+    background-color: $background;
+    color: $white;
+  }
+}
+
+section {
+  display: block;
+}
+
+//Images
+
+//Typography
+h1,
+.h1 {
+  @include font-size(30);
+  line-height: 41px;
+  margin: 0 0 1rem;
+  @include mq($tablet) {
+    @include font-size(40);
+    line-height: 54px;
+  }
+}
+.lead,
+h2,
+.h2 {
+  @include font-size(26);
+  margin: 0 0 1rem;
+  @include mq($tablet) {
+    @include font-size(32);
+  }
+}
+
+h3,
+.h3 {
+  @include font-size(18);
+  margin: 0 0 1rem;
+  @include mq($tablet) {
+    @include font-size(21);
+  }
+}
+
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  margin: 0 0 1rem;
+  @include mq($tablet) {
+    @include font-size(18);
+  }
+}
+
+a,
+a:link,
+a:focus,
+a:visited {
+  color: $blue;
+  text-decoration: none;
+
+  i {
+    color: $pink;
+  }
+}
+a:hover {
+  color: $light-blue;
+}
+
+.text-black {
+  color: $background;
+}
+.text-red {
+  color: $red;
+}
+.text-yellow {
+  color: $yellow;
+}
+.text-blue {
+  color: $blue;
+}
+.text-pink {
+  color: $pink;
+}
+.text-green {
+  color: $green;
+}
+
+.pill {
+  @include font-size(10);
+  @include padding(5px, 5px, 5px, 5px);
+  @include margin(null, 3px, null, null);
+  border-radius: 4px;
+}
+
+.bg-red {
+  background-color: $red;
+}
+.bg-gray {
+  background-color: $gray;
+}
+.bg-green {
+  background-color: $green;
+}
+.bg-yellow {
+  background-color: $yellow;
+}
+.bg-blue {
+  background-color: $blue;
+}
+.bg-light-blue {
+  background-color: $light-blue;
+}
+.bg-purple {
+  background-color: $purple;
+}
+.bg-pink {
+  background-color: $pink;
+}
+.bg-deep-green {
+  background-color: $deep-green;
+}
+.bg-foreground {
+  background-color: $foreground;
+}
+
 .container {
   width: 100%;
   max-width: 900px;
@@ -92,10 +242,8 @@ section {
 }
 
 .row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  @extend %display-flex;
+  @extend %flex-wrap;
   margin-right: -1rem;
   margin-left: -1rem;
 }
@@ -103,13 +251,13 @@ section {
 .site {
   margin: 0 auto;
   width: 100%;
+  position: relative;
+  z-index: 3;
 }
 
 .header-wrap {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  @extend %display-flex;
+  @extend %flex-wrap;
   @include padding(null, $pad, null, $pad);
   @include flex(0, 0, 100%);
 }
@@ -117,7 +265,19 @@ section {
 .header-content {
   @include flex(0, 0, 100%);
   @include padding($pad-lg, $pad, $pad-lg, $pad);
-  background-color: $foreground;
+  @include mq($tablet) {
+    @include padding(4rem, 3rem, 4rem, 3rem);
+  }
+
+  div {
+    max-width: 600px;
+  }
+}
+
+.hero-p {
+  @include mq($tablet) {
+    @include font-size(24);
+  }
 }
 
 .site-nav {
@@ -128,10 +288,18 @@ section {
 }
 
 .section-title {
-  @include padding(4rem, $pad, 2rem, $pad);
+  @include padding(4rem, $pad, 1rem, $pad);
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
+  @include mq($tablet) {
+    //This may look like we are removing bottom and changing top but we are only changing padding top
+    @include padding(6rem, null, null, null);
+  }
+  i {
+    float: right;
+    color: $blue;
+  }
 }
 
 .video-projects {
@@ -140,15 +308,26 @@ section {
     @include flex(0, 0, 100%);
     @include padding(null, $pad, null, $pad);
     //420px covers most XL phones
-    @include mq(420px) {
+    @include mq($tablet) {
       @include flex(0, 0, 50%);
     }
   }
 }
 
+.video-container {
+  @include margin(null, null, 2rem, null);
+}
+
+.project-tags {
+  @include padding($pad, null, null, null);
+  @include margin(2rem, null, null, null);
+  display: block;
+  border-top: $border-color 1px solid;
+}
+
 .logo-projects {
-  display: flex;
-  flex-wrap: wrap;
+  @extend %display-flex;
+  @extend %flex-wrap;
   flex-direction: row;
   flex: 1;
   width: 100%;
@@ -175,4 +354,83 @@ section {
       background: black;
     }
   }
+}
+
+//about
+
+.about {
+  @include padding(4rem, $pad, null, $pad);
+
+  .section {
+    border-top: $border-color solid 1px;
+    border-bottom: $border-color solid 1px;
+    @include flex(0, 0, 100%);
+    @include padding($pad-lg, $pad, $pad-lg, $pad);
+    @include mq($tablet) {
+      @include padding(4rem, 3rem, 4rem, 3rem);
+    }
+  }
+}
+
+//Wordpress Themes
+.theme {
+  flex: 1 1 25%;
+  @include padding($pad, $pad, $pad, $pad);
+  .figure-wrap {
+    position: relative;
+  }
+  figure {
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    @include margin(null, null, 1rem, null);
+    overflow: hidden;
+    border-radius: 4px;
+    @include transform(rotate(0deg));
+    position: relative;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  a:hover figure {
+    @include transform(rotate(-5deg));
+    transition: ease-in-out 0.18s;
+  }
+
+  .figure-bg {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 6px;
+  }
+}
+
+.site-footer {
+  margin-top: 15rem;
+  background-color: $foreground;
+  position: relative;
+}
+
+.site-footer::before {
+  position: absolute;
+  content: "";
+  background-image: url("../images/slime.svg");
+  background-repeat: repeat-x;
+  left: 0;
+  right: 0;
+  height: 358px;
+  bottom: 100%;
+}
+
+.site-footer-container {
+  @include padding(7.5rem, null, 7.5rem, null);
 }
