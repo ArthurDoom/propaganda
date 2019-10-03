@@ -51,10 +51,22 @@ window.onscroll = function() {
 //An array with client objects
 let clients = [
   {
+    url: "http://vbboutique.com/",
+    name: "Vintage Bridal Boutique",
+    img: "assets/images/project-logos/logo.png",
+    style: "project inverted"
+  },
+  {
     url: "http://carnegieconstructionscotland.co.uk/",
     name: "Carnegie Construction",
     img: "assets/images/project-logos/cropped-Carnegie-Construction-Logo.png",
     style: "project"
+  },
+  {
+    url: "http://lohjoineryltd.co.uk/",
+    name: "LOH Joinery",
+    img: "assets/images/project-logos/loh.png",
+    style: "project watson"
   },
   {
     url: "http://crawfordflooring.co.uk/",
@@ -88,12 +100,6 @@ let clients = [
     style: "project"
   },
   {
-    url: "http://watsonbuildingcontractors.co.uk/",
-    name: "Watson",
-    img: "assets/images/project-logos/cropped-Watson-Logo.png",
-    style: "project watson"
-  },
-  {
     url: "http://concept-cabins.co.uk/",
     name: "Concept Cabins",
     img: "assets/images/project-logos/cropped-Web-Logo-Concept-Cabins.png",
@@ -106,10 +112,10 @@ let clients = [
     style: "project inverted"
   },
   {
-    url: "http://vbboutique.com/",
-    name: "Vintage Bridal Boutique",
-    img: "assets/images/project-logos/logo.png",
-    style: "project inverted"
+    url: "http://watsonbuildingcontractors.co.uk/",
+    name: "Watson",
+    img: "assets/images/project-logos/cropped-Watson-Logo.png",
+    style: "project watson"
   },
   {
     url: "http://uniquefitnessglasgow.co.uk/",

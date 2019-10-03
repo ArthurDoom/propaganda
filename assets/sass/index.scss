@@ -201,12 +201,25 @@ a:hover {
   color: $green;
 }
 
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
 .pill {
   @include font-size(10);
   @include padding(5px, 5px, 5px, 5px);
   @include margin(null, 3px, null, null);
   border-radius: 4px;
 }
+
+//Backgound Colors
 
 .bg-red {
   background-color: $red;
