@@ -1,3 +1,14 @@
+import animate from "./animateplus";
+
+animate({
+  elements: document.querySelector(".test"),
+  easing: "out-exponential",
+  duration: 2500,
+  loop: true,
+  direction: "alternate",
+  transform: ["rotate(0turn)", "rotate(1turn)"]
+});
+
 //Doesn't pull in vimeo videos untill button is clicked.
 //https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743
 //Modified for vimeo auto play needs to be looked at
