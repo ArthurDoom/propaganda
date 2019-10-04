@@ -1,39 +1,35 @@
-import animate from "./animateplus";
+//Lazy loading the vimeo videos
+//modified from link below to add animation transition
 
-animate({
-  elements: document.querySelector(".test"),
-  easing: "out-exponential",
-  duration: 2500,
-  loop: true,
-  direction: "alternate",
-  transform: ["rotate(0turn)", "rotate(1turn)"]
+//Get all the videos
+const videos = document.querySelectorAll(".video-wrap");
+
+//Add walter class
+const swapVideo = function() {
+  var iframe = document.createElement("iframe");
+
+  iframe.setAttribute("frameborder", "0");
+  iframe.setAttribute("allowfullscreen", "");
+  iframe.setAttribute(
+    "src",
+    "https://player.vimeo.com/video/" +
+      this.dataset.embed +
+      "?autoplay=1&loop=1&title=0&byline=0&portrait=0"
+  );
+
+  this.innerHTML = "";
+  this.appendChild(iframe);
+};
+
+//apply function when video is clicked
+videos.forEach(function(item) {
+  item.addEventListener("click", function() {
+    this.classList.add("flip-video");
+    setTimeout(swapVideo.bind(this), 500);
+  });
 });
 
-//Doesn't pull in vimeo videos untill button is clicked.
-//https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743
-//Modified for vimeo auto play needs to be looked at
-
-(function() {
-  var video = document.querySelectorAll(".video-wrap");
-
-  for (var i = 0; i < video.length; i++) {
-    video[i].addEventListener("click", function() {
-      var iframe = document.createElement("iframe");
-
-      iframe.setAttribute("frameborder", "0");
-      iframe.setAttribute("allowfullscreen", "");
-      iframe.setAttribute(
-        "src",
-        "https://player.vimeo.com/video/" +
-          this.dataset.embed +
-          "?autoplay=1&loop=1&title=0&byline=0&portrait=0"
-      );
-
-      this.innerHTML = "";
-      this.appendChild(iframe);
-    });
-  }
-})();
+//Scroll back to top button
 
 //Get the button:
 var scrollButton = document.getElementById("scrollBtn");
@@ -57,7 +53,7 @@ window.onscroll = function() {
   scrollFunction();
 };
 
-//Clients, urls and logos
+//Clients, urls and logos I'm too lazy to keep adding html to the index so...
 
 //An array with client objects
 let clients = [
@@ -148,7 +144,7 @@ clients.forEach(client => {
 
 //iterating through contents and returning a string of html
 let htmlData = "";
-for (i = 0; i < contents.length; i++) {
+for (let i = 0; i < contents.length; i++) {
   htmlData += contents[i][0];
 }
 

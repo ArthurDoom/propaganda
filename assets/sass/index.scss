@@ -468,12 +468,13 @@ a:hover {
 }
 
 .video-wrap {
-  background-color: #000;
+  background-color: $foreground;
   margin-bottom: 30px;
   position: relative;
   padding-top: 56.25%;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 8px;
 }
 .video-wrap img {
   width: 100%;
@@ -541,5 +542,27 @@ a:hover {
 }
 
 #scrollBtn.show {
-  opacity: 1;
+  opacity: 1.2;
+}
+
+//Animation classes
+.flip-video {
+  animation: flip 1s;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  49% {
+    opacity: 0;
+  }
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
 }
