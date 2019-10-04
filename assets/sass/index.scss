@@ -407,7 +407,7 @@ a:hover {
   .figure-wrap {
     position: relative;
   }
-  figure {
+  picture {
     display: block;
     margin-block-start: 0;
     margin-block-end: 0;
@@ -419,6 +419,7 @@ a:hover {
     @include transform(rotate(0deg));
     position: relative;
 
+    source,
     img {
       width: 100%;
       height: auto;
@@ -426,7 +427,7 @@ a:hover {
     }
   }
 
-  a:hover figure {
+  a:hover picture {
     @include transform(rotate(-5deg));
     transition: ease-in-out 0.18s;
   }

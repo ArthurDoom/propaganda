@@ -60,74 +60,73 @@ let clients = [
   {
     url: "http://vbboutique.com/",
     name: "Vintage Bridal Boutique",
-    img: "assets/images/project-logos/logo.png",
+    img: "assets/images/project-logos/logo",
     style: "project inverted"
   },
   {
     url: "http://carnegieconstructionscotland.co.uk/",
     name: "Carnegie Construction",
-    img: "assets/images/project-logos/cropped-Carnegie-Construction-Logo.png",
+    img: "assets/images/project-logos/cropped-Carnegie-Construction-Logo",
     style: "project"
   },
   {
     url: "http://lohjoineryltd.co.uk/",
     name: "LOH Joinery",
-    img: "assets/images/project-logos/loh.png",
+    img: "assets/images/project-logos/loh",
     style: "project watson"
   },
   {
     url: "http://crawfordflooring.co.uk/",
     name: "Crawford Flooring",
-    img: "assets/images/project-logos/cropped-Crawford-flooring-Logo.jpg",
+    img: "assets/images/project-logos/cropped-Crawford-flooring-Logo",
     style: "project"
   },
   {
     url: "http://lauraporterbeauty.co.uk/",
     name: "Laura Porter",
-    img: "assets/images/project-logos/cropped-cropped-logo-white.png",
+    img: "assets/images/project-logos/cropped-cropped-logo-white",
     style: "project inverted"
   },
   {
     url: "https://gilliestechnicalservices.com/",
     name: "Gillies Tech",
-    img: "assets/images/project-logos/cropped-gillies-125.jpg",
+    img: "assets/images/project-logos/cropped-gillies-125",
     style: "project"
   },
   {
     url: "http://hotelk9.co.uk/",
     name: "Hotel K9",
-    img: "assets/images/project-logos/cropped-Pet-hotel-logo-1-1.jpg",
+    img: "assets/images/project-logos/cropped-Pet-hotel-logo-1-1",
     style: "project"
   },
   {
     url: "http://switchease.co.uk/",
     name: "Switchease",
-    img:
-      "assets/images/project-logos/cropped-Switchease-Colour-Transparent-BG.png",
+    img: "assets/images/project-logos/cropped-Switchease-Colour-Transparent-BG",
     style: "project"
   },
   {
     url: "http://concept-cabins.co.uk/",
     name: "Concept Cabins",
-    img: "assets/images/project-logos/cropped-Web-Logo-Concept-Cabins.png",
+    img: "assets/images/project-logos/cropped-Web-Logo-Concept-Cabins",
     style: "project"
   },
   {
     url: "http://winwinbusiness.co.uk/",
     name: "cWin Win Business",
-    img: "assets/images/project-logos/cropped-win-win-light-01.png",
+    img: "assets/images/project-logos/cropped-win-win-light-01",
     style: "project inverted"
   },
   {
     url: "http://watsonbuildingcontractors.co.uk/",
     name: "Watson",
-    img: "assets/images/project-logos/cropped-Watson-Logo.png",
+    img: "assets/images/project-logos/cropped-Watson-Logo",
     style: "project watson"
   },
   {
     url: "http://uniquefitnessglasgow.co.uk/",
     name: "Unique Fitness",
-    img: "assets/images/project-logos/unique-fitness.png",
+    img: "assets/images/project-logos/unique-fitness",
     style: "project inverted"
   }
 ];
@@ -138,7 +137,7 @@ let contents = [];
 //Pushing formated version of the data into contents
 clients.forEach(client => {
   contents.push([
-    `<div class="${client.style}"><a href="${client.url}" target="_blank"><img src="${client.img}" alt="${client.name}"/></a></div>`
+    `<div class="${client.style}"><a href="${client.url}" target="_blank"><picture><source srcset="${client.img}.webp" type="image/webp"><img src="${client.img}.png" alt="${client.name}"></picture></a></div>`
   ]);
 });
 
