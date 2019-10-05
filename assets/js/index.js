@@ -167,7 +167,7 @@ document.getElementById("logoProjects").innerHTML = htmlData;
 
 if ("IntersectionObserver" in window) {
   const o_o = document.querySelectorAll(".animate");
-  o_o.forEach(function(project) {
+  o_o.forEach(project => {
     project.classList.add("slide");
     project.style.animationDelay = project.dataset.delay;
   });

@@ -379,6 +379,13 @@ a:hover {
     &.inverted {
       background: black;
     }
+
+    picture {
+      transition: ease-in-out 0.18s;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
   }
 }
 
@@ -417,8 +424,8 @@ a:hover {
     @include margin(null, null, 1rem, null);
     overflow: hidden;
     border-radius: 4px;
-    @include transform(rotate(0deg));
     position: relative;
+    transition: ease-in-out 0.18s;
 
     source,
     img {
@@ -431,7 +438,6 @@ a:hover {
   a:hover {
     picture {
       @include transform(rotate(-5deg));
-      transition: ease-in-out 0.18s;
     }
   }
 
