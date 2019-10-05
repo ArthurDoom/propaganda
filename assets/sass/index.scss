@@ -180,6 +180,7 @@ a:visited {
 }
 a:hover {
   color: $light-blue;
+  transition: ease-in-out 0.18s;
 }
 
 .text-black {
@@ -427,9 +428,11 @@ a:hover {
     }
   }
 
-  a:hover picture {
-    @include transform(rotate(-5deg));
-    transition: ease-in-out 0.18s;
+  a:hover {
+    picture {
+      @include transform(rotate(-5deg));
+      transition: ease-in-out 0.18s;
+    }
   }
 
   .figure-bg {
@@ -497,6 +500,7 @@ a:hover {
   border-width: 15px 0 15px 26px;
   border-color: transparent transparent transparent $pink;
 }
+
 .video-wrap img,
 .video-wrap .play-button {
   cursor: pointer;
@@ -512,6 +516,11 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
+  transition: 0.5s ease-in-out;
+}
+.video-wrap:hover .play-button {
+  transform: translate3d(-50%, -50%, 0) scale(1.05);
+  background-color: $foreground;
 }
 .video-wrap iframe {
   height: 100%;
@@ -564,6 +573,27 @@ a:hover {
   }
   100% {
     transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.slide {
+  opacity: 0;
+}
+
+.animated {
+  animation-name: anima;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes anima {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }

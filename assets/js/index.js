@@ -1,10 +1,11 @@
 //Lazy loading the vimeo videos
-//modified from link below to add animation transition
+//modified version to add animation transition because the stutter is horrible without - based on link below
+//https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743
 
 //Get all the videos
 const videos = document.querySelectorAll(".video-wrap");
 
-//Add walter class
+//Swap the placeholder image with an iframe
 const swapVideo = function() {
   var iframe = document.createElement("iframe");
 
@@ -21,7 +22,7 @@ const swapVideo = function() {
   this.appendChild(iframe);
 };
 
-//apply function when video is clicked
+//apply function with a delay and add class when video is clicked
 videos.forEach(function(item) {
   item.addEventListener("click", function() {
     this.classList.add("flip-video");
@@ -61,73 +62,85 @@ let clients = [
     url: "http://vbboutique.com/",
     name: "Vintage Bridal Boutique",
     img: "assets/images/project-logos/logo",
-    style: "project inverted"
+    style: "project inverted",
+    delay: "0s"
   },
   {
     url: "http://carnegieconstructionscotland.co.uk/",
     name: "Carnegie Construction",
     img: "assets/images/project-logos/cropped-Carnegie-Construction-Logo",
-    style: "project"
+    style: "project",
+    delay: "0.2s"
   },
   {
     url: "http://lohjoineryltd.co.uk/",
     name: "LOH Joinery",
     img: "assets/images/project-logos/loh",
-    style: "project watson"
+    style: "project watson",
+    delay: "0.3s"
   },
   {
     url: "http://crawfordflooring.co.uk/",
     name: "Crawford Flooring",
     img: "assets/images/project-logos/cropped-Crawford-flooring-Logo",
-    style: "project"
+    style: "project",
+    delay: "0.4s"
   },
   {
     url: "http://lauraporterbeauty.co.uk/",
     name: "Laura Porter",
     img: "assets/images/project-logos/cropped-cropped-logo-white",
-    style: "project inverted"
+    style: "project inverted",
+    delay: "0.5s"
   },
   {
     url: "https://gilliestechnicalservices.com/",
     name: "Gillies Tech",
     img: "assets/images/project-logos/cropped-gillies-125",
-    style: "project"
+    style: "project",
+    delay: "0.6s"
   },
   {
     url: "http://hotelk9.co.uk/",
     name: "Hotel K9",
     img: "assets/images/project-logos/cropped-Pet-hotel-logo-1-1",
-    style: "project"
+    style: "project",
+    delay: "0.7s"
   },
   {
     url: "http://switchease.co.uk/",
     name: "Switchease",
     img: "assets/images/project-logos/cropped-Switchease-Colour-Transparent-BG",
-    style: "project"
+    style: "project",
+    delay: "0.8s"
   },
   {
     url: "http://concept-cabins.co.uk/",
     name: "Concept Cabins",
     img: "assets/images/project-logos/cropped-Web-Logo-Concept-Cabins",
-    style: "project"
+    style: "project",
+    delay: "0.9s"
   },
   {
     url: "http://winwinbusiness.co.uk/",
     name: "cWin Win Business",
     img: "assets/images/project-logos/cropped-win-win-light-01",
-    style: "project inverted"
+    style: "project inverted",
+    delay: "1s"
   },
   {
     url: "http://watsonbuildingcontractors.co.uk/",
     name: "Watson",
     img: "assets/images/project-logos/cropped-Watson-Logo",
-    style: "project watson"
+    style: "project watson",
+    delay: "1.1s"
   },
   {
     url: "http://uniquefitnessglasgow.co.uk/",
     name: "Unique Fitness",
     img: "assets/images/project-logos/unique-fitness",
-    style: "project inverted"
+    style: "project inverted",
+    delay: "1.2s"
   }
 ];
 
@@ -137,7 +150,7 @@ let contents = [];
 //Pushing formated version of the data into contents
 clients.forEach(client => {
   contents.push([
-    `<div class="${client.style}"><a href="${client.url}" target="_blank"><picture><source srcset="${client.img}.webp" type="image/webp"><img src="${client.img}.png" alt="${client.name}"></picture></a></div>`
+    `<div class="animate ${client.style}" data-delay="${client.delay}"><a href="${client.url}" target="_blank"><picture><source srcset="${client.img}.webp" type="image/webp"><img src="${client.img}.png" alt="${client.name}"></picture></a></div>`
   ]);
 });
 
@@ -149,3 +162,29 @@ for (let i = 0; i < contents.length; i++) {
 
 //injecting our new string into the page
 document.getElementById("logoProjects").innerHTML = htmlData;
+
+//slide in logos
+
+if ("IntersectionObserver" in window) {
+  const o_o = document.querySelectorAll(".animate");
+  o_o.forEach(function(project) {
+    project.classList.add("slide");
+    project.style.animationDelay = project.dataset.delay;
+  });
+  const animationFun = entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        entry.target.classList.add("animated");
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  observer = new IntersectionObserver(animationFun);
+
+  o_o.forEach(element => {
+    observer.observe(element);
+  });
+} else {
+  console.log("we fucked");
+}
