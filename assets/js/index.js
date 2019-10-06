@@ -144,27 +144,17 @@ let clients = [
   }
 ];
 
-//Empty array we can shove our formated html in
-let contents = [];
-
-//Pushing formated version of the data into contents
-clients.forEach(client => {
-  contents.push([
-    `<div class="animate ${client.style}" data-delay="${client.delay}"><a href="${client.url}" target="_blank"><picture><source srcset="${client.img}.webp" type="image/webp"><img src="${client.img}.png" alt="${client.name}"></picture></a></div>`
-  ]);
-});
-
-//iterating through contents and returning a string of html
-let htmlData = "";
-for (let i = 0; i < contents.length; i++) {
-  htmlData += contents[i][0];
-}
+//Mapping throuugh our clients and returning a bunch of html
+let contents = clients
+  .map(client => {
+    return `<div class="animate ${client.style}" data-delay="${client.delay}"><a href="${client.url}" target="_blank"><picture><source srcset="${client.img}.webp" type="image/webp"><img src="${client.img}.png" alt="${client.name}"></picture></a></div>`;
+  })
+  .join("");
 
 //injecting our new string into the page
-document.getElementById("logoProjects").innerHTML = htmlData;
+document.getElementById("logoProjects").innerHTML = contents;
 
 //slide in logos
-
 if ("IntersectionObserver" in window) {
   const o_o = document.querySelectorAll(".animate");
   o_o.forEach(project => {
