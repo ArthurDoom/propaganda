@@ -1,3 +1,4 @@
+import "./css/main.scss";
 //Lazy loading the vimeo videos
 //modified version to add animation transition because the stutter is horrible without - based on link below
 //https://webdesign.tutsplus.com/tutorials/how-to-lazy-load-embedded-youtube-videos--cms-26743
@@ -44,10 +45,11 @@ function scrollFunction() {
 }
 
 // When the user clicks on the button, scroll to the top of the document
-function topFunction() {
+
+scrollButton.addEventListener("click", function() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+});
 
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {
@@ -61,93 +63,88 @@ let clients = [
   {
     url: "http://vbboutique.com/",
     name: "Vintage Bridal Boutique",
-    img: "assets/images/project-logos/logo",
-    style: "project inverted",
-    delay: "0s"
-  },
-  {
-    url: "http://carnegieconstructionscotland.co.uk/",
-    name: "Carnegie Construction",
-    img: "assets/images/project-logos/cropped-Carnegie-Construction-Logo",
-    style: "project",
-    delay: "0.2s"
-  },
-  {
-    url: "http://lohjoineryltd.co.uk/",
-    name: "LOH Joinery",
-    img: "assets/images/project-logos/loh",
-    style: "project watson",
-    delay: "0.3s"
+    img: "dist/images/project-logos/logo",
+    style: "project inverted"
   },
   {
     url: "http://crawfordflooring.co.uk/",
     name: "Crawford Flooring",
-    img: "assets/images/project-logos/cropped-Crawford-flooring-Logo",
-    style: "project",
-    delay: "0.4s"
+    img: "dist/images/project-logos/cropped-Crawford-flooring-Logo",
+    style: "project"
   },
   {
     url: "http://lauraporterbeauty.co.uk/",
     name: "Laura Porter",
-    img: "assets/images/project-logos/cropped-cropped-logo-white",
-    style: "project inverted",
-    delay: "0.5s"
+    img: "dist/images/project-logos/cropped-cropped-logo-white",
+    style: "project inverted"
   },
   {
-    url: "https://gilliestechnicalservices.com/",
-    name: "Gillies Tech",
-    img: "assets/images/project-logos/cropped-gillies-125",
-    style: "project",
-    delay: "0.6s"
+    url: "http://lohjoineryltd.co.uk/",
+    name: "LOH Joinery",
+    img: "dist/images/project-logos/loh",
+    style: "project watson"
   },
   {
-    url: "http://hotelk9.co.uk/",
-    name: "Hotel K9",
-    img: "assets/images/project-logos/cropped-Pet-hotel-logo-1-1",
-    style: "project",
-    delay: "0.7s"
-  },
-  {
-    url: "http://switchease.co.uk/",
-    name: "Switchease",
-    img: "assets/images/project-logos/cropped-Switchease-Colour-Transparent-BG",
-    style: "project",
-    delay: "0.8s"
-  },
-  {
-    url: "http://concept-cabins.co.uk/",
-    name: "Concept Cabins",
-    img: "assets/images/project-logos/cropped-Web-Logo-Concept-Cabins",
-    style: "project",
-    delay: "0.9s"
-  },
-  {
-    url: "http://winwinbusiness.co.uk/",
-    name: "cWin Win Business",
-    img: "assets/images/project-logos/cropped-win-win-light-01",
-    style: "project inverted",
-    delay: "1s"
-  },
-  {
-    url: "http://watsonbuildingcontractors.co.uk/",
-    name: "Watson",
-    img: "assets/images/project-logos/cropped-Watson-Logo",
-    style: "project watson",
-    delay: "1.1s"
+    url: "https://myroofcare.co.uk/",
+    name: "My Roof Care",
+    img: "dist/images/project-logos/cropped-my-roof-care-logo",
+    style: "project"
   },
   {
     url: "http://uniquefitnessglasgow.co.uk/",
     name: "Unique Fitness",
-    img: "assets/images/project-logos/unique-fitness",
-    style: "project inverted",
-    delay: "1.2s"
+    img: "dist/images/project-logos/unique-fitness",
+    style: "project inverted"
+  },
+  {
+    url: "https://gilliestechnicalservices.com/",
+    name: "Gillies Tech",
+    img: "dist/images/project-logos/cropped-gillies-125",
+    style: "project"
+  },
+  {
+    url: "http://hotelk9.co.uk/",
+    name: "Hotel K9",
+    img: "dist/images/project-logos/cropped-Pet-hotel-logo-1-1",
+    style: "project"
+  },
+  {
+    url: "http://switchease.co.uk/",
+    name: "Switchease",
+    img: "dist/images/project-logos/cropped-Switchease-Colour-Transparent-BG",
+    style: "project"
+  },
+  {
+    url: "http://concept-cabins.co.uk/",
+    name: "Concept Cabins",
+    img: "dist/images/project-logos/cropped-Web-Logo-Concept-Cabins",
+    style: "project"
+  },
+  {
+    url: "http://winwinbusiness.co.uk/",
+    name: "cWin Win Business",
+    img: "dist/images/project-logos/cropped-win-win-light-01",
+    style: "project inverted"
+  },
+  {
+    url: "http://watsonbuildingcontractors.co.uk/",
+    name: "Watson",
+    img: "dist/images/project-logos/cropped-Watson-Logo",
+    style: "project watson"
   }
 ];
 
 //Mapping throuugh our clients and returning a bunch of html
 let contents = clients
-  .map(client => {
-    return `<div class="animate ${client.style}" data-delay="${client.delay}"><a href="${client.url}" target="_blank"><picture><source srcset="${client.img}.webp" type="image/webp"><img src="${client.img}.png" alt="${client.name}"></picture></a></div>`;
+  .map((client, idx) => {
+    return `<div class="animate ${client.style}" data-delay="${idx *
+      0.25}s"><a href="${
+      client.url
+    }" target="_blank"><picture><source srcset="${
+      client.img
+    }.webp" type="image/webp"><img src="${client.img}.png" alt="${
+      client.name
+    }"></picture></a></div>`;
   })
   .join("");
 
@@ -170,7 +167,7 @@ if ("IntersectionObserver" in window) {
     });
   };
 
-  observer = new IntersectionObserver(animationFun);
+  const observer = new IntersectionObserver(animationFun);
 
   o_o.forEach(element => {
     observer.observe(element);

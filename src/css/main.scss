@@ -87,6 +87,7 @@ $tablet: 420px;
 html {
   box-sizing: border-box;
   @include font-size(16);
+  scroll-behavior: smooth; //Not the best support but hey...
 }
 *,
 *::before,
@@ -183,6 +184,21 @@ a:hover {
   transition: ease-in-out 0.18s;
 }
 
+.btn,
+.btn:link,
+.btn:focus,
+.btn:visited {
+  color: $white;
+  text-decoration: none;
+  border: $border-color solid 1px;
+  @include padding(0.5rem, 1rem, 0.5rem, 1rem);
+  font-weight: 700;
+}
+.btn:hover {
+  color: $light-blue;
+  transition: ease-in-out 0.18s;
+}
+
 .text-black {
   color: $background;
 }
@@ -200,6 +216,14 @@ a:hover {
 }
 .text-green {
   color: $green;
+}
+
+$dark-green: darken($green, 20%);
+
+.yellow-highlight {
+  background: linear-gradient(to bottom, transparent 36%, $dark-green 0) center
+    center/0% 75% no-repeat;
+  background-size: 100% 100%;
 }
 
 .sr-only {
@@ -286,13 +310,41 @@ a:hover {
 .header-content {
   @include flex(0, 0, 100%);
   @include padding($pad-lg, $pad, $pad-lg, $pad);
+  position: relative;
+  z-index: 1;
   @include mq($tablet) {
     @include padding(4rem, 3rem, 4rem, 3rem);
   }
 
-  div {
+  .header-text {
     max-width: 600px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translate(0, -30px);
+    animation-name: header-text;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0.35s; /* Chrome, Safari, Opera */
+    animation-delay: 0.35s;
   }
+}
+
+div.header-content-bg {
+  background-color: $foreground;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1, 0);
+  animation-name: header-anima;
+  animation-duration: 0.85s;
+  animation-fill-mode: forwards;
+  transform-origin: top;
+  max-width: 100%;
 }
 
 .hero-p {
@@ -405,6 +457,11 @@ a:hover {
   }
 }
 
+.fav {
+  @include margin(4rem, null, null, null);
+  @include padding(1rem, null, null, null);
+}
+
 //Wordpress Themes
 .theme {
   flex: 1 1 50%;
@@ -461,7 +518,7 @@ a:hover {
 .site-footer::before {
   position: absolute;
   content: "";
-  background-image: url("../images/slime.svg");
+  background-image: url(./images/slime.svg);
   background-repeat: repeat-x;
   left: 0;
   right: 0;
@@ -477,6 +534,7 @@ a:hover {
   }
 }
 
+.image-wrap,
 .video-wrap {
   background-color: $foreground;
   margin-bottom: 30px;
@@ -486,6 +544,7 @@ a:hover {
   cursor: pointer;
   border-radius: 8px;
 }
+.image-wrap img,
 .video-wrap img {
   width: 100%;
   top: 0%;
@@ -511,6 +570,7 @@ a:hover {
 .video-wrap .play-button {
   cursor: pointer;
 }
+.image-wrap img,
 .video-wrap img,
 .video-wrap iframe,
 .video-wrap .play-button,
@@ -561,6 +621,67 @@ a:hover {
   opacity: 1.2;
 }
 
+//Plugins
+.plugins {
+  @extend %display-flex;
+  @extend %flex-wrap;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
+  align-items: stretch;
+}
+
+.plugin {
+  display: flex;
+  @include flex(1, 1, 100%);
+  @include padding(1rem, 1rem, 1rem, 1rem);
+  @include mq($tablet) {
+    @include flex(1, 1, 50%);
+  }
+}
+
+/*
+.plugin-card
+Flex direction is row instead of column. 
+We need to use align-self on .plugin-footer (align-self does not work with column)
+to keep it at the bottom of the card even if text amount on opposite card is larger
+*/
+.plugin-card {
+  background: $foreground;
+  font-size: 13px;
+  @include padding(1rem, 1rem, 1rem, 1rem);
+  color: $gray;
+  display: flex;
+  flex-direction: row;
+  @extend %flex-wrap;
+
+  div {
+    @include flex(0, 0, 100%);
+  }
+
+  h6 {
+    color: $white;
+  }
+}
+
+.plugin-footer {
+  border-top: $border-color 1px solid;
+  @include padding(1rem, null, null, null);
+  @include margin(1rem, null, null, null);
+  align-self: flex-end;
+  @include flex(0, 0, 100%);
+
+  .btn {
+    display: inline-block;
+  }
+
+  i {
+    float: right;
+    color: $green;
+    font-size: 30px;
+  }
+}
+
 //Animation classes
 .flip-video {
   animation: flip 1s;
@@ -596,6 +717,29 @@ a:hover {
 @keyframes anima {
   0% {
     transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+//header-content-bg
+@keyframes header-anima {
+  0% {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes header-text {
+  0% {
+    transform: translateY(-30px);
     opacity: 0;
   }
   100% {

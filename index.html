@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Primary Meta Tags -->
     <title>Walter Craig - Propaganda</title>
+    <script
+      crossorigin="anonymous"
+      src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"
+    ></script>
+
     <meta name="title" content="Walter Craig - Propaganda" />
     <meta
       name="description"
@@ -15,77 +20,77 @@
     <link
       rel="apple-touch-icon"
       sizes="57x57"
-      href="./assets/images/meta/icons/apple-icon-57x57.png"
+      href="./dist/images/meta/icons/apple-icon-57x57.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="60x60"
-      href="./assets/images/meta/icons/apple-icon-60x60.png"
+      href="./dist/images/meta/icons/apple-icon-60x60.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="72x72"
-      href="./assets/images/meta/icons/apple-icon-72x72.png"
+      href="./dist/images/meta/icons/apple-icon-72x72.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="76x76"
-      href="./assets/images/meta/icons/apple-icon-76x76.png"
+      href="./dist/images/meta/icons/apple-icon-76x76.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="114x114"
-      href="./assets/images/meta/icons/apple-icon-114x114.png"
+      href="./dist/images/meta/icons/apple-icon-114x114.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="120x120"
-      href="./assets/images/meta/icons/apple-icon-120x120.png"
+      href="./dist/images/meta/icons/apple-icon-120x120.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="144x144"
-      href="./assets/images/meta/icons/apple-icon-144x144.png"
+      href="./dist/images/meta/icons/apple-icon-144x144.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="152x152"
-      href="./assets/images/meta/icons/apple-icon-152x152.png"
+      href="./dist/images/meta/icons/apple-icon-152x152.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./assets/images/meta/icons/apple-icon-180x180.png"
+      href="./dist/images/meta/icons/apple-icon-180x180.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="./assets/images/meta/icons/android-icon-192x192.png"
+      href="./dist/images/meta/icons/android-icon-192x192.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./assets/images/meta/icons/favicon-32x32.png"
+      href="./dist/images/meta/icons/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="96x96"
-      href="./assets/images/meta/icons/favicon-96x96.png"
+      href="./dist/images/meta/icons/favicon-96x96.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="./assets/images/meta/icons/favicon-16x16.png"
+      href="./dist/images/meta/icons/favicon-16x16.png"
     />
-    <link rel="manifest" href="./assets/images/meta/icons/manifest.json" />
+    <link rel="manifest" href="./dist/images/meta/icons/manifest.json" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta
       name="msapplication-TileImage"
-      content="./assets/images/meta/icons/ms-icon-144x144.png"
+      content="./dist/images/meta/icons/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#ffffff" />
 
@@ -126,7 +131,7 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="./dist/main.css" />
     <title>Walter Craig - Propaganda</title>
   </head>
   <body>
@@ -138,8 +143,8 @@
               <nav class="site-nav">
                 <span class="option">0_0</span>
               </nav>
-              <div class="header-content bg-foreground">
-                <div>
+              <div class="header-content">
+                <div class="header-text">
                   <h1>Hi I'm <span class="text-green">Walter</span></h1>
                   <p class="lead">
                     I'm a <span class="text-pink">software engineer</span>
@@ -153,6 +158,7 @@
                     <span class="text-green">mobile development.</span>
                   </p>
                 </div>
+                <div class="header-content-bg"></div>
               </div>
             </div>
           </div>
@@ -165,13 +171,8 @@
             <div class="container">
               <div class="row">
                 <div class="project" id="t30">
-                  <span class="sr-only"
-                    >Video srolling through T30 Website</span
-                  >
-                  <div class="video-wrap" data-embed="363603111" ;>
-                    <!-- (2) the "play" button -->
-                    <div class="play-button"></div>
-                    <img class="test" src="./assets/images/videos/t30.png" />
+                  <div class="image-wrap">
+                    <a href="https://t30fitnesstraining.com" target="_blank"><img class="test" src="./dist/images/videos/t30.png" alt="Rugby player running towards us"/></a>
                   </div>
                   <h3>T30 Fitness Training</h3>
                   <p>
@@ -184,22 +185,18 @@
                     </a>
                   </p>
                   <div class="project-tags">
-                    <span class="pill bg-yellow text-black">Javascript</span
-                    ><span class="pill bg-red">Jquery</span
-                    ><span class="pill bg-light-blue text-black"
-                      >Wordpress</span
-                    >
+                    <span class="pill bg-light-blue text-black">LESS</span><span class="pill bg-yellow text-black">Javascript</span><span class="pill bg-red">Jquery</span><span class="pill bg-blue">Wordpress</span><span class="pill bg-yellow text-black">SQL</span><span class="pill bg-purple">Woocommerce</span>
                   </div>
                 </div>
                 <!--/-#t30-->
                 <div class="project" id="t30">
                   <span class="sr-only">
-                    Video srolling through Get Me Active Website
+                    Video introducing the Get Me Active Website App
                   </span>
-                  <div class="video-wrap" data-embed="363658162">
+                  <div class="video-wrap" data-embed="365158065">
                     <!-- (2) the "play" button -->
                     <div class="play-button"></div>
-                    <img src="./assets/images/videos/getmeactive.png" />
+                    <img src="./dist/images/videos/getmeactive.png" alt="A screen shot of the GetMeActive website"/>
                   </div>
                   <h3>Get Me Active</h3>
                   <p>
@@ -207,16 +204,12 @@
                     <span class="text-blue">WP</span> landing site.
                   </p>
                   <p>
-                    <a href="https://t30fitnesstraining.com" target="_blank">
+                    <a href="http://getmeactive.co.uk" target="_blank">
                       <i class="fas fa-external-link-alt"></i> Visit Site
                     </a>
                   </p>
                   <div class="project-tags">
-                    <span class="pill bg-yellow text-black">Javascript</span
-                    ><span class="pill bg-red">Jquery</span
-                    ><span class="pill bg-light-blue text-black"
-                      >Wordpress</span
-                    >
+                    <span class="pill bg-red">Larvel</span><span class="pill bg-light-blue text-black">LESS</span><span class="pill bg-yellow text-black">Javascript</span><span class="pill bg-red">Jquery</span><span class="pill bg-blue">Wordpress</span><span class="pill bg-yellow text-black">SQL</span>
                   </div>
                 </div>
                 <!--/-#t30-->
@@ -241,12 +234,38 @@
                 <div class="section">
                   <h2 class="h1">About</h2>
                   <p class="lead">
-                    We can help with many things, but what we are particularly
-                    good at is the development of great websites and software
-                    interfaces. Because we think the Internet should be fun, a
-                    POS software should not be dull and a machine operation not
-                    be complicated. Let's get your ideas on track.
+                    I can help with many things, but what I am particularly good
+                    at is the
+                    <span class="yellow-highlight"
+                      >development of great websites.</span
+                    >
+                    By combining agile methods, continuous delivery, modern
+                    <span class="yellow-highlight"
+                      >Javascript, React, Sass, HTML5</span
+                    >
+                    we can achieve not only brand goals but increase sales.
                   </p>
+                  <div class="fav">
+                    <h6>My favourite tools</h6>
+                    <span class="pill bg-yellow text-black">Javascript</span>
+                    <span class="pill bg-blue">React</span>
+                    <span class="pill bg-purple">Redux</span>
+                    <span class="pill bg-red">Firebase</span>
+                    <span class="pill bg-light-blue text-black">Webpack</span>
+                    <span class="pill bg-pink">Sass</span>
+                    <span class="pill bg-green">HTML</span>
+                    <span class="pill bg-blue">Wordpress</span>
+                    <span class="pill bg-red">Jquery</span>
+                    
+                  </div>
+                  <div class="fav">
+                      <h6>My favourite apps</h6>
+                      <span class="pill bg-blue">Visual Studio Code</span>
+                      <span class="pill bg-pink">inVision</span>
+                      <span class="pill bg-blue">Sketch</span>
+                      <span class="pill bg-red">The Adobe Suite</span>
+                      <span class="pill bg-green">Google Docs</span>
+                    </div>
                 </div>
               </div>
             </div>
@@ -262,15 +281,15 @@
           <div class="container">
             <div class="row">
               <div class="theme">
-                <a href="#">
+                <a href="https://arthurdoom.github.io/saturn-public/" target="_blank">
                   <div class="figure-wrap">
                     <picture>
                       <source
-                        srcset="./assets/images/themes/saturn-website.webp"
+                        srcset="./dist/images/themes/saturn-website.webp"
                         type="image/webp"
                       />
                       <img
-                        src="./assets/images/themes/saturn-website.png"
+                        src="./dist/images/themes/saturn-website.png"
                         alt="Saturn Wordpress Theme"
                       />
                     </picture>
@@ -280,15 +299,15 @@
                 >
               </div>
               <div class="theme">
-                <a href="#">
+                <a href="https://arthurdoom.github.io/mars-public/" target="_blank">
                   <div class="figure-wrap">
                     <picture>
                       <source
-                        srcset="./assets/images/themes/mars-beauty.webp"
+                        srcset="./dist/images/themes/mars-beauty.webp"
                         type="image/webp"
                       />
                       <img
-                        src="./assets/images/themes/mars-beauty.png"
+                        src="./dist/images/themes/mars-beauty.png"
                         alt="Mars Wordpress Theme"
                       />
                     </picture>
@@ -298,15 +317,15 @@
                 >
               </div>
               <div class="theme">
-                <a href="#">
+                <a href="https://arthurdoom.github.io/pluto-public/" target="_blank">
                   <div class="figure-wrap">
                     <picture>
                       <source
-                        srcset="./assets/images/themes/pluto-corporate.webp"
+                        srcset="./dist/images/themes/pluto-corporate.webp"
                         type="image/webp"
                       />
                       <img
-                        src="./assets/images/themes/pluto-corporate.png"
+                        src="./dist/images/themes/pluto-corporate.png"
                         alt="Pluto Wordpress Theme"
                       />
                     </picture>
@@ -316,15 +335,15 @@
                 >
               </div>
               <div class="theme">
-                <a href="#">
+                <a href="https://arthurdoom.github.io/coruscan-public/" target="_blank">
                   <div class="figure-wrap">
                     <picture>
                       <source
-                        srcset="./assets/images/themes/coruscan-corporate.webp"
+                        srcset="./dist/images/themes/coruscan-corporate.webp"
                         type="image/webp"
                       />
                       <img
-                        src="./assets/images/themes/coruscan-corporate.png"
+                        src="./dist /images/themes/coruscan-corporate.png"
                         alt="Coruscan Wordpress Theme"
                       />
                     </picture>
@@ -341,15 +360,10 @@
             <div class="row">
               <div class="about">
                 <div class="section">
-                  <h2 class="h1">Contact</h2>
+                  <h2 class="h1">More info?</h2>
                   <p class="lead">
                     Get in touch by email
-                    <a href="mailto:walterrosscraig@gmail.com">here</a> or
-                    message me on
-                    <span class="text-light-blue">messenger</span> over
-                    <a href="#">here.</a> Github is over
-                    <span class="text-green">there...></span>
-                    <a href="#"><i class="fab fa-github-alt"></i></a>
+                    <a href="mailto:walterrosscraig@gmail.com">here.</a> For a more in-depth profile, please visit view my <a href="https://linkedin.com/in/walterrosscraig">LinkedIn.</a> For some code have a look at my Github <a href="https://github.com/ArthurDoom">here.</a>
                   </p>
                 </div>
               </div>
@@ -357,6 +371,69 @@
           </div>
         </section>
         <!--/-about-->
+        <section>
+          <div class="section-title">
+            <h2 class="h3">
+              Wordpress Plugins & Git Repos <i class="fas fa-puzzle-piece"></i></i>
+            </h2>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="plugins">
+                <div class="plugin">
+                    <div class="plugin-card">
+                      <div>
+                        <h6>WebApp</h6>
+                        A nice web app starter pack that makes use of webpack, babel and Sass. Run a local dev server and build versions.</div>
+                      <div class="plugin-footer">
+                        <a href="https://github.com/ArthurDoom/webapp" class="btn">Download</a>
+                        <i class="fab fa-git-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="plugin">
+                  <div class="plugin-card">
+                    <div>
+                        <h6>Cosites holding page</h6>
+                        A Wordpress Plugin that displays a holding page with Cosites branding. If logged into wordpress dashboard the holding page does not display.
+                    </div>
+                    <div class="plugin-footer">
+                      <a href="https://github.com/ArthurDoom/cosites-holding-page-public" class="btn" target="_blank">Download</a>
+                      <i class="fab fa-git-alt"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="plugin">
+                  <div class="plugin-card">
+                    <div>
+                        <h6>Services Post Type</h6>
+                        Add to your Wordpress installation to add service sections / post-types to your website. 
+                    </div>
+                    <div class="plugin-footer">
+                      <a href="https://github.com/ArthurDoom/earth-services-pt" class="btn" target="_blank">Download</a>
+                      <i class="fab fa-git-alt"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="plugin">
+                  <div class="plugin-card">
+                    <div>
+                        <h6>Testimonial Post Type</h6>
+                        Add to your Wordpress installation to add testimonial sections / post-types to your website. 
+                    </div>
+                    <div class="plugin-footer">
+                      <a href="https://github.com/ArthurDoom/earth-testimonial-pt" class="btn" target="_blank">Download</a>
+                      <i class="fab fa-git-alt"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <footer class="site-footer">
         <div class="container site-footer-container">
@@ -364,9 +441,9 @@
         </div>
       </footer>
     </div>
-    <button onclick="topFunction()" id="scrollBtn" title="Go to top">
+    <button id="scrollBtn" title="Go to top">
       <i class="fas fa-hand-point-up"></i>
     </button>
-    <script src="./assets/js/index-min.js"></script>
+    <script src="./dist/main.js"></script>
   </body>
 </html>
