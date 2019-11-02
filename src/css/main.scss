@@ -240,8 +240,9 @@ $dark-green: darken($green, 20%);
 .pill {
   @include font-size(10);
   @include padding(5px, 5px, 5px, 5px);
-  @include margin(null, 3px, null, null);
+  @include margin(null, 3px, 10px, null);
   border-radius: 4px;
+  display: inline-block;
 }
 
 //Backgound Colors
@@ -466,7 +467,7 @@ div.header-content-bg {
 .theme {
   flex: 1 1 50%;
   @include padding($pad, $pad, $pad, $pad);
-  @include mq($tablet) {
+  @include mq(620px) {
     flex: 1 1 25%;
   }
   .figure-wrap {
