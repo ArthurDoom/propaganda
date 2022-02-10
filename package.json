@@ -27,7 +27,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^3.6.0",
     "mini-css-extract-plugin": "^0.8.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "postcss-loader": "^3.0.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^8.0.2",
